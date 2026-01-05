@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Packet Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .card {
+            width: 650px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .row {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 160px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Packet Inspection</h2>
+
+    {% if packet %}
+        <div class="row"><span class="label">Source IP:</span> {{ packet[0] }}</div>
+        <div class="row"><span class="label">Destination IP:</span> {{ packet[1] }}</div>
+        <div class="row"><span class="label">Protocol:</span> {{ packet[2] }}</div>
+        <div class="row"><span class="label">Source Port:</span> {{ packet[3] }}</div>
+        <div class="row"><span class="label">Destination Port:</span> {{ packet[4] }}</div>
+        <div class="row"><span class="label">Packet Length:</span> {{ packet[5] }}</div>
+        <div class="row"><span class="label">Timestamp:</span> {{ packet[6] }}</div>
+    {% else %}
+        <p>Packet not found.</p>
+    {% endif %}
+
+    <a class="back" href="/packets">⬅ Back to packet list</a>
+</div>
+
+</body>
+</html>
+

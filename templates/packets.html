@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Packets</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px;
+        }
+        tr:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .TCP { background-color: #e6f7ff; }
+        .UDP { background-color: #fff7e6; }
+        .OTHER { background-color: #f5f5f5; }
+    </style>
+</head>
+<body>
+
+<h2>Wireshark-style Packet List</h2>
+
+<form method="get" action="/packets">
+    <input type="text" name="q" placeholder="Search IP"
+           value="{{ request.args.get('q','') }}">
+
+    <select name="protocol">
+        <option value="">All Protocols</option>
+        <option value="TCP"
+            {% if request.args.get('protocol') == 'TCP' %}selected{% endif %}>
+            TCP
+        </option>
+        <option value="UDP"
+            {% if request.args.get('protocol') == 'UDP' %}selected{% endif %}>
+            UDP
+        </option>
+        <option value="OTHER"
+            {% if request.args.get('protocol') == 'OTHER' %}selected{% endif %}>
+            OTHER
+        </option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+<br>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Source IP</th>
+        <th>Destination IP</th>
+        <th>Protocol</th>
+        <th>Length</th>
+        <th>Timestamp</th>
+    </tr>
+
+    {% for p in packets %}
+    <tr class="{{ p[3] }}" onclick="window.location='/packet/{{ p[0] }}'">
+        <td>{{ p[0] }}</td>
+        <td>{{ p[1] }}</td>
+        <td>{{ p[2] }}</td>
+        <td>{{ p[3] }}</td>
+        <td>{{ p[4] }}</td>
+        <td>{{ p[5] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
