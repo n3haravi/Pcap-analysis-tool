@@ -5,7 +5,7 @@ It reads PCAP files, decodes network packets, extracts protocol-level informatio
 
 Instead of using Wireshark as a black box, this project focuses on understanding and implementing how packet analysis works internally.
 
-🎯 Objectives
+Objectives
 
 Understand the structure of PCAP files
 
@@ -15,7 +15,9 @@ Analyze captured network traffic
 
 Replicate core Wireshark analysis logic for learning purposes
 
-🛠️ Features
+
+
+Features
 
 Load and analyze PCAP files
 
@@ -45,7 +47,10 @@ Packet counts
 
 Communication patterns
 
-🧠 How This Replicates Wireshark
+
+
+
+How This Replicates Wireshark
 
 This project replicates Wireshark’s core logic, including:
 
@@ -57,9 +62,12 @@ Applying programmatic filters
 
 Analyzing network flows
 
-⚠️ Note: This is not a full Wireshark clone, but a learning-focused implementation of its internal packet-analysis concepts.
+Note: This is not a full Wireshark clone, but a learning-focused implementation of its internal packet-analysis concepts.
 
-🧰 Tech Stack
+
+
+
+Tech Stack
 
 Language: Python
 
